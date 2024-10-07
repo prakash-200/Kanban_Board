@@ -7,6 +7,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import AddColumn from './AddColumn';
 import AddTask from './AddTask';
 
+
 const Board = ({ columns, tasks, setTasks, onDragEnd, onAddTask, onAddColumn }) => {
   const [columnPage, setColumnPage] = useState(false);
   const [taskPage, setTaskPage] = useState(false);
@@ -20,7 +21,7 @@ const Board = ({ columns, tasks, setTasks, onDragEnd, onAddTask, onAddColumn }) 
     <div>
       <div className="row row-12 p-3">
         <div className="col col-7 text-end">
-          <h2 className='text-light' style={{ fontFamily: 'cursive' }}>Kanban Board</h2>
+          <h2 className='kanban' style={{ fontFamily: 'cursive' }}>Kanban Board</h2>
         </div>
         <div className="col col-5 text-end">
 
@@ -55,12 +56,11 @@ const Board = ({ columns, tasks, setTasks, onDragEnd, onAddTask, onAddColumn }) 
 
       {/* Kanban Board */}
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className="container">
+        <div className="row w-100 cont" style={{ height: '' }}>
           {columns.map((column) => {
             const columnTasks = tasks.filter(task => task.columnId === column.id);
             return (
-              <div className='row row-12 vw-100 vh-100'>
-                <div className="col col-4">
+                <div className="col col-3">
                   <Column
                     key={column.id}
                     column={column}
@@ -69,7 +69,6 @@ const Board = ({ columns, tasks, setTasks, onDragEnd, onAddTask, onAddColumn }) 
                     onAddTask={onAddTask}
                   />
                 </div>
-              </div>
             );
           })}
         </div>

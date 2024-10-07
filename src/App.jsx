@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState } from 'react';
 import Board from './components/Board';
-import './app.css';
+import './App.css';
 
 const initialColumns = [
   { id: 'column-1', title: 'To Do' },

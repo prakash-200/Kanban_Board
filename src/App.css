@@ -1,4 +1,4 @@
-/* src/styles/styles.css */
+
 
 body {
   font-family: Arial, sans-serif;
@@ -9,15 +9,26 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }
 
 h1 {
   text-align: center;
 }
 
-.container {
+.kanban{
+  /* background: #4F4F4F; */
+  background: linear-gradient(to top, red, yellow);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+
+}
+
+.cont {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .column {
