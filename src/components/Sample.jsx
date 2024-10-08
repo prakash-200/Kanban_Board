@@ -1,16 +1,14 @@
-
 import React, { useState } from 'react';
 import { MdDelete } from "react-icons/md";
 import { useDrag } from 'react-dnd';
 
-const Task = ({ task, setTasks, index, person }) => {
+const Task = ({ task, setTasks, index }) => {
   const [editPermit, setEditPermit] = useState(false);
   
   const [editTask, setEditTask] = useState({
     content: task.content, 
     summary: task.summary, 
-    info: task.info,
-    person: task.person
+    info: task.info
   });
 
   const [{ isDragging }, drag] = useDrag({
@@ -43,34 +41,25 @@ const Task = ({ task, setTasks, index, person }) => {
   };
 
   const handleCancel = () => {
-    // setEditTask({
-    //   content: task.content, 
-    //   summary: task.summary, 
-    //   info: task.info
-    // });
     setEditPermit(false); // Close the edit modal
   };
 
+  // Double click handler to open the edit menu
+  const handleDoubleClick = () => {
+    setEditPermit(true);
+  };
+
   return (
-    <div ref={drag} className="task m-2" 
-    style={{ opacity: isDragging ? 0.5 : 1 }}
-    onDoubleClick={() => setEditPermit(true)}
+    <div
+      ref={drag}
+      className="task m-2"
+      style={{ opacity: isDragging ? 0.5 : 1 }}
+      onDoubleClick={handleDoubleClick} // Set double click to open edit menu
     >
       <h4 className='text-primary text-center fw-bold text-decoration-underline'>{task.content}</h4>
       <h4 className='text-dark fw-bold'>{task.summary}</h4>
       <h6 className='text-secondary'>{task.info}</h6>
       <div className='d-flex justify-content-between'>
-        <h6>{task.person}</h6>
-        <h6><button className='bg-warning border-0 rounded-2 text-dark fw-bold'>{task.date}</button></h6>
-      </div>
-      <div className='d-flex justify-content-end'>
-        {/* <button
-          className='bg-success text-light me-2 border-0 rounded-2'
-          style={{ width: '60px' }}
-          onClick={() => setEditPermit(true)} // Only open the modal
-        >
-          Edit
-        </button> */}
         <button
           className='bg-danger text-light me-2 border-0 rounded-2'
           onClick={() => handleDelete(task.id)}
@@ -81,7 +70,7 @@ const Task = ({ task, setTasks, index, person }) => {
 
       {editPermit && (
         <div className='modal-overlay'>
-          <div className='bg-dark p-2 rounded-4' style={{ width: '350px', height: '350px' }}>
+          <div className='bg-dark p-2' style={{ width: '350px', height: '300px' }}>
             <p className='text-center h3 fw-bold  text-warning'>Edit Task</p>
             <label className='text-light'>Task Name:</label>
             <input
@@ -112,15 +101,6 @@ const Task = ({ task, setTasks, index, person }) => {
               required
               onChange={(e) => setEditTask({ ...editTask, info: e.target.value })} 
             />
-
-            <label className='text-light mt-2'>Select Person:</label>
-            <select className='border-0 ms-2 rounded-2' onClick={(e) => setEditTask({ ...editTask, person: e.target.value })} name="" value={editTask.person} id="">
-              {
-                person.map((pn) => {
-                  return <option key={pn.index}>{pn}</option>
-                })
-              }
-            </select>
             
             <div className='text-center mt-2'>
               <button

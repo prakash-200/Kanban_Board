@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
+import { MdOutlineLineStyle } from "react-icons/md";
 
-function AddColumn({setColumnPage, onAddColumn}) {
+function AddColumn({setShowCategory, onAddColumn}) {
     const [newColumnTitle, setNewColumnTitle] = useState('');
-
-    const hidePopUp = () => {
-        setColumnPage(false)
-    }
 
     const handleAddColumn = () => {
         if (newColumnTitle.trim() === '') return;
@@ -13,14 +10,14 @@ function AddColumn({setColumnPage, onAddColumn}) {
         onAddColumn(newColumnTitle);
     
         setNewColumnTitle('');
-        setColumnPage(false)
+        setShowCategory(false)
       };
 
   return (
-    <div className='modal-overlay2'>
-        <div className='bg-black p-2 rounded-2' style={{ width: '250px', height: '170px' }}>
-            <p className='text-center text-warning fw-bold fs-5'>Add Column</p>
-            <label htmlFor="" className='text-light w-100 text-start'>Column Name:</label><br />
+    <div className='modal-overlay3'>
+        <h4 className='text-warning text-center'>Add Column&nbsp; <span className='text-light'><MdOutlineLineStyle /></span></h4>
+        <div className='p-2 rounded-2' style={{ width: '250px', height: '170px' }}>
+            <label htmlFor="" className='text-light fw-medium w-100 text-start'>Column Name:</label><br />
             <input type="text" 
             value={newColumnTitle}
             onChange={(e) => setNewColumnTitle(e.target.value)}
@@ -28,8 +25,8 @@ function AddColumn({setColumnPage, onAddColumn}) {
             placeholder='Enter a Column Name'
             required
             />
-            <div className='d-flex justify-content-between'>
-            <button className='border-0 bg-danger text-light rounded-2' onClick={hidePopUp}>Cancel</button>
+            <div className='d-flex justify-content-between' style={{  }}>
+            <button className='border-0 bg-danger text-light rounded-2' onClick={() => setShowCategory(false)}>Cancel</button>
             <button className='border-0 bg-success text-light rounded-2' onClick={handleAddColumn} style={{ width: '60px' }} >Add</button>
             </div>
         </div>

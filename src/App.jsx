@@ -1,4 +1,4 @@
-// src/App.js
+
 import React, { useState } from 'react';
 import Board from './components/Board';
 import './App.css';
@@ -9,16 +9,41 @@ const initialColumns = [
   { id: 'column-3', title: 'Done' },
 ];
 
+const person = [ "prakash", "aravinth", "santhosh", "arivu", "jeeva" ]
+
 const initialTasks = [
-  { id: 'task-1', content: 'Task 1', summary: '😀😁😂🤣😃', info: 'Sample emoji', columnId: 'column-1' },
-  { id: 'task-2', content: 'Task 2', summary: 'Daily Routine', info: 'Complete daily practises and checklist', columnId: 'column-1' },
-  { id: 'task-3', content: 'Task 3', summary: 'Sample Text', info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel explicabo, dicta ipsam,', columnId: 'column-2' },
+  { id: 'task-1', content: 'Task 1', summary: '😀😁😂🤣😃', info: 'Sample emoji', person: 'prakash', date: '08/10/24', columnId: 'column-1' },
+  { id: 'task-2', content: 'Task 2', summary: 'Daily Routine♻️', info: 'Complete daily practises and checklist', person: 'aravinth', date: '10/10/24', columnId: 'column-1' },
+  { id: 'task-3', content: 'Task 3', summary: 'Sample Text📑', info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel explicabo, dicta ipsam.', person: 'arivu', date: '18/10/24', columnId: 'column-2' },
+  { id: 'task-4', content: 'Task 4', summary: 'Task✅', info: 'Project done ', person: 'santhosh', date: '15/10/24', columnId: 'column-3' },
 ];
 
 const App = () => {
   const [columns, setColumns] = useState(initialColumns);
   const [tasks, setTasks] = useState(initialTasks);
-
+  
+  const onAddTask = (id, content, summary, info, person, formattedDate) => {
+    const newTask = {
+      id: `task-${tasks.length + 1}`,
+      content,
+      summary,
+      info,
+      person,
+      date: formattedDate,
+      columnId: id
+    };
+    
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+  };
+  
+  const onAddColumn = (newColumnTitle) => {
+    const newColumn = {
+      id: `column-${columns.length + 1}`,
+      title: newColumnTitle,
+    };
+    setColumns([...columns, newColumn]);
+  };
+  
   const onDragEnd = (result) => {
     if (!result.destination) return;
 
@@ -30,26 +55,6 @@ const App = () => {
     setTasks(newTasks);
   };
 
-  const onAddTask = (id, content, summary, info) => {
-    const newTask = {
-      id: `task-${tasks.length + 1}`,
-      content,
-      summary,
-      info,
-      columnId: id
-    };
-
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-  };
-
-  const onAddColumn = (newColumnTitle) => {
-    const newColumn = {
-      id: `column-${columns.length + 1}`,
-      title: newColumnTitle,
-    };
-    setColumns([...columns, newColumn]);
-  };
-
   return (
     <div className='container-fluid'>
       <Board
@@ -59,6 +64,7 @@ const App = () => {
         onDragEnd={onDragEnd}
         onAddTask={onAddTask}
         onAddColumn={onAddColumn}
+        person={person}
       />
 
     </div>

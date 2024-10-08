@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0px;
-  overflow-y: scroll;
+  overflow: hidden;
   background-image: url("https://tse4.mm.bing.net/th?id=OIP.a1lLEdAAL7wJgKCt5ga80QHaEK&pid=Api&P=0&h=180");
   background-position: center;
   background-repeat: no-repeat;
@@ -25,7 +25,10 @@ h1 {
 
 .cont {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  overflow-x: hidden; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of columns */
+  padding: 20px;
 }
 
 .column {
@@ -33,7 +36,7 @@ h1 {
   border: 1px solid red;
   border-radius: 4px;
   width: 300px;
-  height: fit-content;
+  max-height: 80vh;
   background-image: url("https://wallpapercave.com/wp/wp11410778.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -43,6 +46,7 @@ h1 {
   font-weight: bolder;
   font-family: "Times New Roman", Times, serif;
   box-shadow: rgba(253, 253, 253, 0.35) 0px 5px 15px;
+  white-space: normal;
 }
 
 .column h3 {
@@ -107,6 +111,15 @@ h1 {
   background: rgba(0, 0, 0, 0.7);
 }
 
+.modal-overlay3 {
+  position: absolute;
+  right: 25px;
+  top: 100px;
+  z-index: 2;
+  border-radius: 15px;
+  /* background-color: black; */
+}
+
 .modal-content {
   background: white;
   padding: 20px;
@@ -128,9 +141,29 @@ h1 {
   box-sizing: border-box;
 }
 
+.slide{
+  height: 100vh;
+  width: 20vw;
+  top: 50px;
+  right: 0px;
+  position: absolute;
+  background-color: rgba(91, 91, 91, 0.7);
+  border-top-left-radius: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
 
 /* Media Query */
 @media (max-width: 768px) {
+
+  body{
+    background-color: black;
+  }
+
+  .column{
+    width: 250px;
+  }
+
   .add-task{
     width: 250px;
 
@@ -144,6 +177,24 @@ h1 {
     top: 50px;
     right: 10px;
   }
+
+  .column{
+    width: 250px;
+  }
+
+  .slide{
+    width: 60vw;
+  }
+
+  .addBtn{
+    font-size: smaller;
+  }
+
+  .modal-overlay3{
+    position: absolute;
+    right: 0px;
+  }
+
 }
 
 @media (min-width: 768px) {
