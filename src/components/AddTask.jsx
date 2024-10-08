@@ -9,10 +9,6 @@ const AddTask = ({ columns, onAddTask, setTaskPage }) => {
     info: ''
   })
 
-  // const [taskContent, setTaskContent] = useState('');
-  // const [taskSummary, setTaskSummary] = useState('');
-  // const [taskInfo, setTaskInfo] = useState('');
-
   console.log(columns);
   
 
@@ -43,7 +39,7 @@ const AddTask = ({ columns, onAddTask, setTaskPage }) => {
   
 
   return (
-    <div className="add-task w-25 rounded-2" style={{ position: 'absolute', right: '10px', top: '160px', backgroundColor: 'rgb(255, 255, 255, .7)' }}>
+    <div className="add-task rounded-2" style={{ position: 'absolute', right: '10px', top: '160px', backgroundColor: 'rgb(255, 255, 255, .7)' }}>
       <form onSubmit={handleSubmit} className='p-2'>
         <h2 className='w-100 text-center text-danger'>Add Task</h2>
         <label htmlFor="" className='w-100 text-start fw-medium'>Column Name:</label>
@@ -73,7 +69,6 @@ const AddTask = ({ columns, onAddTask, setTaskPage }) => {
           placeholder="Add a Summary"
           value={newTask.summary}
           onChange={(e) => setNewTask({ ...newTask, summary: e.target.value })}
-          // required
         />
 
         <label htmlFor="" className='w-100 text-start fw-medium'>Task Info:</label>
