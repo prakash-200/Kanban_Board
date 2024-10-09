@@ -52,7 +52,7 @@ const AddTask = ({ columns, onAddTask, setShowCategory, person }) => {
       <form onSubmit={handleSubmit} className='p-2'>
         <h4 className='w-100 text-center text-warning'>Add Task&nbsp;<span className='text-light'><MdOutlineLineStyle /></span></h4>
         <label htmlFor="" className='w-100 text-light text-start fw-medium'>Column Name:</label>
-        <select name="columnId" id="" value={newTask.id} className='w-100' onChange={(e) => setNewTask({ ...newTask, id: e.target.value })}>
+        <select name="columnId" id="" value={newTask.id} className='w-100 p-2 rounded-2' onChange={(e) => setNewTask({ ...newTask, id: e.target.value })}>
           <option value="">Select</option>
           {
             columns.map((column) => (
@@ -91,6 +91,7 @@ const AddTask = ({ columns, onAddTask, setShowCategory, person }) => {
 
         <label htmlFor="" className='w-100 text-light text-start fw-medium'>Task Assign:</label>
         <select 
+        className='w-100 p-2 rounded-2'
           value={newTask.person} // Set value to bind to newTask state
           onChange={(e) => setNewTask({ ...newTask, person: e.target.value })} 
           name="" 
@@ -106,7 +107,7 @@ const AddTask = ({ columns, onAddTask, setShowCategory, person }) => {
 
         <div className='mt-3'>
           <input type="button" className='bg-danger border-0 text-light rounded-2' onClick={() => setShowCategory(false)} value="Cancel" />
-          <input type="submit" className='bg-success border-0 text-light rounded-2 float-end' value="submit" />
+          <input type="submit" className='bg-success border-0 text-light rounded-2 float-end' value="Submit" />
         </div>
 
         {/* <div className='row bg-info' style={{ height: '20px' }}>

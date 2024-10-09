@@ -36,15 +36,15 @@ const Column = ({ column, tasks, setTasks, person }) => {
     <div ref={drop} className="column">
       <div className="row">
 
-        <div className="col col-7 text-end">
+        <div className="col text-center">
           <h4 className="fw-bold pt-2" onClick={() => setIsExpanded(!isExpanded)} style={{ cursor: 'pointer' }}>
-            {column.title} {isExpanded ? '▼' : '▲'}
+            {column.title} <span className='text-dark'>({count})</span> {isExpanded ? '▼' : '▲'}
           </h4>
         </div>
         
-        <div className="col">
+        {/* <div className="col">
           <h5 className='pt-2 text-dark'>Tasks: <span className='text-danger'>{count}</span></h5>
-        </div>
+        </div> */}
       </div>
 
       {isExpanded && (

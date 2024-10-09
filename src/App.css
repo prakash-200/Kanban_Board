@@ -36,11 +36,12 @@ h1 {
   border: 1px solid red;
   border-radius: 4px;
   width: 300px;
-  max-height: 80vh;
-  background-image: url("https://wallpapercave.com/wp/wp11410778.jpg");
+  /* max-height: 80vh; */
+  /* background-image: url("https://cdn.wallpapersafari.com/62/22/zbgYcO.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+  background-color: white;
   color: red;
   font-size: large;
   font-weight: bolder;
@@ -147,9 +148,10 @@ h1 {
   top: 50px;
   right: 0px;
   position: absolute;
-  background-color: rgba(91, 91, 91, 0.7);
+  background-color: black;
   border-top-left-radius: 20px;
   font-family: 'Times New Roman', Times, serif;
+  box-shadow: rgba(253, 253, 253, 0.35) 0px 5px 15px;
 }
 
 
@@ -157,7 +159,7 @@ h1 {
 @media (max-width: 768px) {
 
   body{
-    background-color: black;
+    background-image: url('https://wallpaperaccess.com/full/2677048.jpg');
   }
 
   .column{
