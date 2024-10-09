@@ -42,9 +42,6 @@ const Column = ({ column, tasks, setTasks, person }) => {
           </h4>
         </div>
         
-        {/* <div className="col">
-          <h5 className='pt-2 text-dark'>Tasks: <span className='text-danger'>{count}</span></h5>
-        </div> */}
       </div>
 
       {isExpanded && (
