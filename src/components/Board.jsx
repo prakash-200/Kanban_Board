@@ -147,27 +147,27 @@ const Board = ({ columns, tasks, setTasks, onAddTask, onAddColumn, person }) => 
 
   // Ref for the scrollable container
   const scrollRef = useRef(null);
-  const [isDraggingTask, setIsDraggingTask] = useState(false); // New state to track task dragging
+  const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
   // Handle mouse down event
   const handleMouseDown = (e) => {
-    if (isDraggingTask) return; // Disable column sliding when dragging a task
+    setIsDragging(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
   };
 
   // Handle touch start event
   const handleTouchStart = (e) => {
-    if (isDraggingTask) return; // Disable column sliding when dragging a task
+    setIsDragging(true);
     setStartX(e.touches[0].pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
   };
 
   // Handle mouse move event
   const handleMouseMove = (e) => {
-    if (!startX || isDraggingTask) return;
+    if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX) * 2; // Speed factor for drag
@@ -176,7 +176,7 @@ const Board = ({ columns, tasks, setTasks, onAddTask, onAddColumn, person }) => 
 
   // Handle touch move event
   const handleTouchMove = (e) => {
-    if (!startX || isDraggingTask) return;
+    if (!isDragging) return;
     e.preventDefault();
     const x = e.touches[0].pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX) * 2; // Speed factor for drag
@@ -184,8 +184,8 @@ const Board = ({ columns, tasks, setTasks, onAddTask, onAddColumn, person }) => 
   };
 
   // Handle mouse up and touch end events
-  const handleMouseUp = () => setStartX(0);
-  const handleTouchEnd = () => setStartX(0);
+  const handleMouseUp = () => setIsDragging(false);
+  const handleTouchEnd = () => setIsDragging(false);
 
   return (
     <DndProvider backend={isMobile() ? TouchBackend : HTML5Backend} options={{ enableMouseEvents: true }}>
@@ -227,7 +227,7 @@ const Board = ({ columns, tasks, setTasks, onAddTask, onAddColumn, person }) => 
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          style={{ cursor: isDraggingTask ? 'default' : 'grab' }} // Change cursor based on dragging
+          style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
         >
           {columns.map((column) => {
             const columnTasks = tasks.filter(task => task.columnId === column.id);
@@ -237,7 +237,7 @@ const Board = ({ columns, tasks, setTasks, onAddTask, onAddColumn, person }) => 
                   column={column}
                   tasks={columnTasks}
                   setTasks={setTasks}
-                  setIsDraggingTask={setIsDraggingTask} // Pass down the setter
+                  onAddTask={onAddTask}
                   person={person}
                 />
               </div>

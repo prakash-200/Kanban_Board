@@ -43,11 +43,6 @@ const Task = ({ task, setTasks, index, person }) => {
   };
 
   const handleCancel = () => {
-    // setEditTask({
-    //   content: task.content, 
-    //   summary: task.summary, 
-    //   info: task.info
-    // });
     setEditPermit(false); // Close the edit modal
   };
 

@@ -11,6 +11,23 @@ const Column = ({ column, tasks, setTasks, person }) => {
   // For count the tasks
   const [count, setCount] = useState(0);
 
+  // const [{ canDrop, isOver }, drop] = useDrop({
+  //   accept: 'TASK',
+  //   drop: (item) => {
+  //     const newTask = { ...item, columnId: column.id }; // Update the columnId when dropped
+  //     setTasks((prevTasks) => {
+  //       // Remove the old task and add the new one with the updated columnId
+  //       return prevTasks.map(task =>
+  //         task.id === item.id ? newTask : task
+  //       );
+  //     });
+  //   },
+  //   collect: (monitor) => ({
+  //     isOver: !!monitor.isOver(),
+  //     canDrop: !!monitor.canDrop(),
+  //   }),
+  // });
+
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: 'TASK',
     drop: (item) => {
