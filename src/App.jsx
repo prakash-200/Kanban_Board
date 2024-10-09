@@ -9,13 +9,13 @@ const initialColumns = [
   { id: 'column-3', title: 'Done' },
 ];
 
-const person = [ "prakash", "aravinth", "santhosh", "arivu", "jeeva" ]
+const person = [ "Prakash", "Aravinth", "Santhosh", "Arivu", "Jeeva" ]
 
 const initialTasks = [
-  { id: 'task-1', content: 'Task 1', summary: '😀😁😂🤣😃', info: 'Sample emoji', person: 'prakash', date: '08/10/24', columnId: 'column-1' },
-  { id: 'task-2', content: 'Task 2', summary: 'Daily Routine♻️', info: 'Complete daily practises and checklist', person: 'aravinth', date: '10/10/24', columnId: 'column-1' },
-  { id: 'task-3', content: 'Task 3', summary: 'Sample Text📑', info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel explicabo, dicta ipsam.', person: 'arivu', date: '18/10/24', columnId: 'column-2' },
-  { id: 'task-4', content: 'Task 4', summary: 'Task✅', info: 'Project done ', person: 'santhosh', date: '15/10/24', columnId: 'column-3' },
+  { id: 'task-1', content: 'Task 1', summary: '😀😁😂🤣😃', info: 'Sample emoji', person: 'Prakash', date: '08/10/24', columnId: 'column-1' },
+  { id: 'task-2', content: 'Task 2', summary: 'Daily Routine♻️', info: 'Complete daily practises and checklist', person: 'Aravinth', date: '10/10/24', columnId: 'column-1' },
+  { id: 'task-3', content: 'Task 3', summary: 'Sample Text📑', info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel explicabo, dicta ipsam.', person: 'Arivu', date: '18/10/24', columnId: 'column-2' },
+  { id: 'task-4', content: 'Task 4', summary: 'Task✅', info: 'Project done ', person: 'Santhosh', date: '15/10/24', columnId: 'column-3' },
 ];
 
 const App = () => {

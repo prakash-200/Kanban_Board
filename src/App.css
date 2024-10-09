@@ -26,8 +26,8 @@ h1 {
 .cont {
   display: flex;
   justify-content: flex-start;
-  overflow-x: hidden; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent wrapping of columns */
+  overflow-x: hidden; 
+  white-space: nowrap; 
   padding: 20px;
 }
 

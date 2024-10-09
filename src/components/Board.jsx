@@ -69,7 +69,7 @@ const Board = ({ columns, tasks, setTasks, onAddTask, onAddColumn, person }) => 
             <h2 className='kanban fw-bold' style={{ fontFamily: 'cursive' }}>Kanban Board</h2>
           </div>
           <div className="col col-md-5 col-xs-5 text-end">
-            <button className='bg-warning fw-bold border-0 rounded-2' onClick={() => setShowCategory(!showCategory)}>
+            <button className='bg-warning fw-bold border-0 rounded-2' style={{ fontFamily: 'Times New Roman' }} onClick={() => setShowCategory(!showCategory)}>
               Add &nbsp;<FaPlus className='mb-1' />
             </button>
           </div>

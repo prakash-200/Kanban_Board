@@ -59,15 +59,19 @@ const Task = ({ task, setTasks, index, person }) => {
       <h4 className='text-primary text-center fw-bold text-decoration-underline'>{task.content}</h4>
       <h4 className='text-dark fw-bold'>{task.summary}</h4>
       <h6 className='text-secondary'>{task.info}</h6>
-      <div className='d-flex justify-content-between'>
-        <h6><span className='fw-bold'>To:</span>&nbsp;{task.person}</h6>
-        <div>
-          <button className='bg-warning border-0 rounded-2 text-dark fw-bold'>{task.date}</button>
-          <button
-            className='bg-danger ms-2 text-light me-2 border-0 rounded-2'
-            onClick={() => handleDelete(task.id)}>
-            <MdDelete />
-          </button>
+      <div className='row'>
+        <div className='col col-6'>
+          <p className='fw-bold h6'>To: <span className='text-dark fw-medium'>{task.person}</span></p>
+        </div>
+        <div className='col col-6 d-flex justify-content-end'>
+          <div className='' style={{ position: 'relative', left: '-10px' }}>
+            <button className='bg-warning fs-6 border-0 rounded-2 text-dark fw-bold'>{task.date}</button>
+          </div>
+          <div>
+            <button className='bg-danger text-light border-0 rounded-2' onClick={() => handleDelete(task.id)}>
+              <MdDelete />
+            </button>
+          </div>
         </div>
       </div>
       {/* <div className='d-flex justify-content-end'>
