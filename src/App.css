@@ -149,6 +149,7 @@ h1 {
   right: 0px;
   position: absolute;
   background-color: black;
+  z-index: 2;
   border-top-left-radius: 20px;
   font-family: 'Times New Roman', Times, serif;
   box-shadow: rgba(253, 253, 253, 0.35) 0px 5px 15px;
